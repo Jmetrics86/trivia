@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import {
+  DIFFICULTY_POINTS,
   STORAGE_KEY,
   addCustomQuestion,
   addTeam,
@@ -16,6 +17,7 @@ import {
   exportBackup,
   getAllQuestions,
   getAvailableQuestions,
+  getQuestionPoints,
   importBackup,
   isValidQuestion,
   loadState,
@@ -41,7 +43,7 @@ function createMemoryStorage() {
   };
 }
 
-test('questions.json has 4 categories and 60 valid questions (15 each)', async () => {
+test('questions.json has 4 categories, 60 valid questions, exact 5/5/5 difficulty balance, and accurate point mapping', async () => {
   const raw = await fs.readFile(path.join(rootDir, 'data/questions.json'), 'utf8');
   const data = JSON.parse(raw);
 
@@ -54,16 +56,54 @@ test('questions.json has 4 categories and 60 valid questions (15 each)', async (
   assert.equal(data.questions.length, 60);
 
   const ids = new Set();
-  const counts = { history: 0, anatomy: 0, music: 0, food: 0 };
+  const counts = {
+    history: { easy: 0, medium: 0, hard: 0 },
+    anatomy: { easy: 0, medium: 0, hard: 0 },
+    music: { easy: 0, medium: 0, hard: 0 },
+    food: { easy: 0, medium: 0, hard: 0 }
+  };
+
   for (const q of data.questions) {
     assert.equal(isValidQuestion(q), true, `Invalid question: ${q.id}`);
     assert.equal(ids.has(q.id), false, `Duplicate ID: ${q.id}`);
     ids.add(q.id);
-    counts[q.category] += 1;
-    assert.ok([100, 200, 300].includes(q.points), `Unexpected points on ${q.id}`);
+
+    // Exact difficulty -> points alignment
+    assert.equal(
+      q.points,
+      DIFFICULTY_POINTS[q.difficulty],
+      `Points mismatch on ${q.id}: difficulty=${q.difficulty}, points=${q.points}`
+    );
+    assert.equal(
+      getQuestionPoints(q, { scoringMode: 'difficulty', flatPoints: 50 }),
+      DIFFICULTY_POINTS[q.difficulty]
+    );
+    assert.equal(getQuestionPoints(q, { scoringMode: 'flat', flatPoints: 50 }), 50);
+
+    // Unique choices within question
+    const normalizedChoices = new Set(q.choices.map((c) => c.trim().toLowerCase()));
+    assert.equal(normalizedChoices.size, 4, `Duplicate choices on ${q.id}`);
+
+    // Prevent direct answer text leaks in question prompt
+    const answerText = q.choices[q.answerIndex].trim().toLowerCase();
+    if (answerText.length >= 4) {
+      assert.equal(
+        q.question.toLowerCase().includes(answerText),
+        false,
+        `Question prompt leaks answer on ${q.id}: "${answerText}"`
+      );
+    }
+
+    counts[q.category][q.difficulty] += 1;
   }
 
-  assert.deepEqual(counts, { history: 15, anatomy: 15, music: 15, food: 15 });
+  for (const cat of ['history', 'anatomy', 'music', 'food']) {
+    assert.deepEqual(
+      counts[cat],
+      { easy: 5, medium: 5, hard: 5 },
+      `Unbalanced difficulty distribution in ${cat}`
+    );
+  }
 });
 
 test('browser storage load/save persists state cleanly', () => {

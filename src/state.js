@@ -1,5 +1,17 @@
 export const STORAGE_KEY = 'ivcf_trivia_state_v1';
 
+export const DIFFICULTY_POINTS = Object.freeze({
+  easy: 100,
+  medium: 200,
+  hard: 300
+});
+
+export const DIFFICULTY_LABELS = Object.freeze({
+  easy: 'Easy',
+  medium: 'Medium',
+  hard: 'Hard'
+});
+
 export const TEAM_COLORS = [
   { id: 'crimson', label: 'Valor Red', hex: '#A8302D' },
   { id: 'navy', label: 'Iron Navy', hex: '#212A59' },
@@ -135,6 +147,8 @@ export function isValidQuestion(q) {
   if (!q || typeof q !== 'object') return false;
   if (typeof q.id !== 'string' || !q.id.trim()) return false;
   if (typeof q.category !== 'string' || !q.category.trim()) return false;
+  if (!Object.prototype.hasOwnProperty.call(DIFFICULTY_POINTS, q.difficulty)) return false;
+  if (q.points !== undefined && q.points !== DIFFICULTY_POINTS[q.difficulty]) return false;
   if (typeof q.question !== 'string' || !q.question.trim()) return false;
   if (!Array.isArray(q.choices) || q.choices.length !== 4) return false;
   if (q.choices.some((c) => typeof c !== 'string' || !c.trim())) return false;
@@ -152,8 +166,11 @@ export function getQuestionPoints(question, settings) {
   if (settings.scoringMode === 'flat') {
     return settings.flatPoints;
   }
+  if (question && Object.prototype.hasOwnProperty.call(DIFFICULTY_POINTS, question.difficulty)) {
+    return DIFFICULTY_POINTS[question.difficulty];
+  }
   const pts = Number(question?.points);
-  return Number.isFinite(pts) && pts > 0 ? Math.trunc(pts) : 100;
+  return Number.isFinite(pts) && pts > 0 ? Math.trunc(pts) : DIFFICULTY_POINTS.easy;
 }
 
 /** Filter unasked questions by optional category and difficulty. */
@@ -408,10 +425,9 @@ export function addCustomQuestion(state, payload) {
     ? payload.choices.map((c) => String(c || '').trim())
     : [];
   const answerIndex = Number(payload.answerIndex);
-  const difficulty = ['easy', 'medium', 'hard'].includes(payload.difficulty)
+  const difficulty = Object.prototype.hasOwnProperty.call(DIFFICULTY_POINTS, payload.difficulty)
     ? payload.difficulty
     : 'medium';
-  const pointsMap = { easy: 100, medium: 200, hard: 300 };
 
   if (!cleanQuestion) return { state, error: 'Question prompt is required.' };
   if (choices.length !== 4 || choices.some((c) => !c)) {
@@ -425,7 +441,7 @@ export function addCustomQuestion(state, payload) {
     id: makeId('custom'),
     category: payload.category || 'history',
     difficulty,
-    points: pointsMap[difficulty],
+    points: DIFFICULTY_POINTS[difficulty],
     question: cleanQuestion,
     choices,
     answerIndex,
