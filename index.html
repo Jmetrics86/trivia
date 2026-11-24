@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#151c38" />
+  <title>Iron Valor CrossFit • Trivia Host</title>
+  <link rel="icon" type="image/png" href="./assets/iron-valor-logo.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-lockup">
+        <div class="logo-badge">
+          <img
+            src="./assets/iron-valor-logo.png"
+            alt="Iron Valor CrossFit Logo"
+            class="brand-logo"
+            width="44"
+            height="44"
+          />
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">IRON VALOR TRIVIA</h1>
+          <p class="brand-subtitle">Delray Beach • Admin &amp; Scoreboard</p>
+        </div>
+      </div>
+      <span class="header-pill" id="deck-counter-pill" aria-live="polite">0 / 0 left</span>
+    </header>
+
+    <main class="app-main" id="app-main">
+      <!-- PLAY TAB -->
+      <section class="tab-panel active" id="tab-play" aria-label="Play Trivia">
+        <div class="scoreboard-strip" id="play-scoreboard" aria-label="Live Team Scores"></div>
+
+        <section class="card controls-card">
+          <div class="section-header-row">
+            <h2 class="section-title">Category</h2>
+            <div class="difficulty-pills" id="difficulty-filter" role="group" aria-label="Difficulty filter">
+              <button type="button" class="mini-pill active" data-diff="all">Any</button>
+              <button type="button" class="mini-pill" data-diff="easy">100</button>
+              <button type="button" class="mini-pill" data-diff="medium">200</button>
+              <button type="button" class="mini-pill" data-diff="hard">300</button>
+            </div>
+          </div>
+
+          <div class="category-grid" id="category-picker"></div>
+
+          <button type="button" class="btn btn-primary btn-pull" id="btn-pull-random">
+            <span aria-hidden="true">🎲</span>
+            <span>Pull Random Trivia</span>
+          </button>
+        </section>
+
+        <section class="card question-stage" id="question-stage" aria-live="polite"></section>
+      </section>
+
+      <!-- TEAMS TAB -->
+      <section class="tab-panel" id="tab-teams" aria-label="Manage Teams" hidden>
+        <section class="card">
+          <h2 class="section-title">Create Team</h2>
+          <form id="create-team-form" class="stack-form">
+            <div class="form-row">
+              <label for="new-team-name" class="sr-only">Team Name</label>
+              <input
+                id="new-team-name"
+                type="text"
+                class="input"
+                placeholder="e.g. 6AM Crew, Barbell Club"
+                maxlength="32"
+                required
+              />
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+            <div class="color-picker-row" id="team-color-picker" role="radiogroup" aria-label="Team color"></div>
+          </form>
+        </section>
+
+        <section class="teams-list" id="teams-list"></section>
+      </section>
+
+      <!-- LOGS TAB -->
+      <section class="tab-panel" id="tab-logs" aria-label="Review Logs" hidden>
+        <section class="card">
+          <div class="section-header-row">
+            <h2 class="section-title">Session Logs</h2>
+            <div class="btn-inline-group">
+              <button type="button" class="btn btn-ghost btn-sm" id="btn-export-csv">Export CSV</button>
+              <button type="button" class="btn btn-danger-outline btn-sm" id="btn-clear-logs">Clear</button>
+            </div>
+          </div>
+
+          <div class="log-filters">
+            <select id="log-filter-team" class="select" aria-label="Filter logs by team">
+              <option value="all">All Teams</option>
+            </select>
+            <select id="log-filter-type" class="select" aria-label="Filter logs by action">
+              <option value="all">All Actions</option>
+              <option value="correct">Correct</option>
+              <option value="wrong">Wrong</option>
+              <option value="manual">Score Edits</option>
+              <option value="skip">Skipped</option>
+              <option value="system">System</option>
+            </select>
+          </div>
+
+          <div class="log-stats" id="log-stats"></div>
+        </section>
+
+        <section class="logs-feed" id="logs-feed"></section>
+      </section>
+
+      <!-- ADMIN TAB -->
+      <section class="tab-panel" id="tab-admin" aria-label="Admin Controls" hidden>
+        <section class="card">
+          <h2 class="section-title">Game Rules</h2>
+          <div class="settings-list">
+            <div class="setting-row">
+              <div>
+                <div class="setting-label">Scoring Mode</div>
+                <div class="setting-help">Use question difficulty (100/200/300) or flat points</div>
+              </div>
+              <select id="setting-scoring-mode" class="select select-compact" aria-label="Scoring mode">
+                <option value="difficulty">Difficulty (100–300)</option>
+                <option value="flat">Flat Points</option>
+              </select>
+            </div>
+
+            <div class="setting-row" id="flat-points-row" hidden>
+              <div>
+                <div class="setting-label">Flat Points Value</div>
+                <div class="setting-help">Points awarded per question in flat mode</div>
+              </div>
+              <input
+                id="setting-flat-points"
+                type="number"
+                class="input input-compact"
+                min="1"
+                max="10000"
+                step="10"
+              />
+            </div>
+
+            <label class="setting-row toggle-row">
+              <div>
+                <div class="setting-label">Deduct Points on Wrong</div>
+                <div class="setting-help">Subtract question points when marked wrong</div>
+              </div>
+              <input type="checkbox" id="setting-wrong-penalty" class="toggle" />
+            </label>
+
+            <label class="setting-row toggle-row">
+              <div>
+                <div class="setting-label">Auto-Rotate Active Team</div>
+                <div class="setting-help">Advance turn to next team after a correct answer</div>
+              </div>
+              <input type="checkbox" id="setting-auto-rotate" class="toggle" />
+            </label>
+
+            <label class="setting-row toggle-row">
+              <div>
+                <div class="setting-label">Show Choices Immediately</div>
+                <div class="setting-help">Turn off for Host Flashcard mode (hide options until tapped)</div>
+              </div>
+              <input type="checkbox" id="setting-show-choices" class="toggle" />
+            </label>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">Deck &amp; Session Controls</h2>
+          <div class="deck-breakdown" id="admin-deck-breakdown"></div>
+          <div class="admin-actions-grid">
+            <button type="button" class="btn btn-secondary" id="btn-reset-deck">Reset Question Deck</button>
+            <button type="button" class="btn btn-secondary" id="btn-reset-scores">Zero All Scores</button>
+            <button type="button" class="btn btn-ghost" id="btn-export-backup">Backup JSON</button>
+            <label class="btn btn-ghost file-btn">
+              Restore JSON
+              <input type="file" id="input-import-backup" accept="application/json" hidden />
+            </label>
+          </div>
+          <button type="button" class="btn btn-danger-outline btn-full" id="btn-factory-reset">
+            Factory Reset Browser State
+          </button>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">Add Custom Question</h2>
+          <form id="custom-question-form" class="stack-form">
+            <div class="two-col">
+              <div>
+                <label for="cq-category" class="field-label">Category</label>
+                <select id="cq-category" class="select">
+                  <option value="history">History</option>
+                  <option value="anatomy">Anatomy &amp; Equipment</option>
+                  <option value="music">Music</option>
+                  <option value="food">Food</option>
+                </select>
+              </div>
+              <div>
+                <label for="cq-difficulty" class="field-label">Difficulty</label>
+                <select id="cq-difficulty" class="select">
+                  <option value="easy">Easy (100)</option>
+                  <option value="medium" selected>Medium (200)</option>
+                  <option value="hard">Hard (300)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="cq-prompt" class="field-label">Question</label>
+              <textarea id="cq-prompt" class="input textarea" rows="2" placeholder="Enter question..." required></textarea>
+            </div>
+
+            <div class="choices-inputs">
+              <input id="cq-choice-0" type="text" class="input" placeholder="Option A" required />
+              <input id="cq-choice-1" type="text" class="input" placeholder="Option B" required />
+              <input id="cq-choice-2" type="text" class="input" placeholder="Option C" required />
+              <input id="cq-choice-3" type="text" class="input" placeholder="Option D" required />
+            </div>
+
+            <div class="two-col">
+              <div>
+                <label for="cq-answer" class="field-label">Correct Option</label>
+                <select id="cq-answer" class="select">
+                  <option value="0">Option A</option>
+                  <option value="1">Option B</option>
+                  <option value="2">Option C</option>
+                  <option value="3">Option D</option>
+                </select>
+              </div>
+              <div>
+                <label for="cq-explanation" class="field-label">Fun Fact (Optional)</label>
+                <input id="cq-explanation" type="text" class="input" placeholder="Brief note" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Save Custom Question</button>
+          </form>
+
+          <div id="custom-questions-list" class="custom-q-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <nav class="bottom-nav" aria-label="Main Navigation">
+      <button type="button" class="nav-btn active" data-tab="play" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <span>Play</span>
+      </button>
+      <button type="button" class="nav-btn" data-tab="teams">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        <span>Teams</span>
+      </button>
+      <button type="button" class="nav-btn" data-tab="logs">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+        <span>Logs</span>
+      </button>
+      <button type="button" class="nav-btn" data-tab="admin">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        <span>Admin</span>
+      </button>
+    </nav>
+  </div>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

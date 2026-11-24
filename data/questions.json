@@ -1,0 +1,654 @@
+{
+  "categories": [
+    {
+      "id": "history",
+      "name": "History",
+      "subtitle": "Delray Area, Military & Valor"
+    },
+    {
+      "id": "anatomy",
+      "name": "Anatomy & Equipment",
+      "subtitle": "Muscles, Mechanics & Gym Gear"
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "subtitle": "CrossFit Box Anthems"
+    },
+    {
+      "id": "food",
+      "name": "Food",
+      "subtitle": "Macros, Micros & Fuel"
+    }
+  ],
+  "questions": [
+    {
+      "id": "hist-01",
+      "category": "history",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Before being renamed Delray in 1901, what was the Delray Beach settlement originally named after its founder from Michigan?",
+      "choices": ["Linton", "Flaglerville", "Palm Port", "Atlantic City"],
+      "answerIndex": 0,
+      "explanation": "Former Michigan Congressman William S. Linton purchased 160 acres in 1894 and platted the town as Linton before settlers renamed it Delray in 1901."
+    },
+    {
+      "id": "hist-02",
+      "category": "history",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "In what year was the mainland town of Delray officially incorporated?",
+      "choices": ["1898", "1911", "1927", "1936"],
+      "answerIndex": 1,
+      "explanation": "The mainland town of Delray incorporated in 1911. The barrier island incorporated separately in 1923, and the two merged into the City of Delray Beach in 1927."
+    },
+    {
+      "id": "hist-03",
+      "category": "history",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Downtown Delray Beach's Pineapple Grove Arts District is named after which historic local boom crop?",
+      "choices": ["Oranges", "Sugarcane", "Pineapples", "Key Limes"],
+      "answerIndex": 2,
+      "explanation": "Pineapple and tomato farming boomed in Delray around 1911, giving the historic Pineapple Grove neighborhood its name."
+    },
+    {
+      "id": "hist-04",
+      "category": "history",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Established in 1942 just south of Delray Beach, which major WWII installation served as a premier Army Air Forces radar training base?",
+      "choices": ["Boca Raton Army Air Field", "Homestead Naval Yard", "Fort Lauderdale Air Depot", "West Palm Artillery Range"],
+      "answerIndex": 0,
+      "explanation": "Boca Raton Army Air Field trained thousands of troops in top-secret radar technology during WWII; part of the site later became Florida Atlantic University."
+    },
+    {
+      "id": "hist-05",
+      "category": "history",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Which top-secret WWII Army Signal Corps radar school near Jupiter and Stuart is preserved today as Jonathan Dickinson State Park?",
+      "choices": ["Camp Blanding", "Camp Murphy", "Camp Flagler", "Camp Valor"],
+      "answerIndex": 1,
+      "explanation": "Opened in 1942 across more than 11,000 acres, Camp Murphy housed the Southern Signal Corps School before closing in 1944."
+    },
+    {
+      "id": "hist-06",
+      "category": "history",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which early 1900s Japanese-American farming community near Delray and Boca Raton had land condemned during WWII for military airbase construction?",
+      "choices": ["Okeechobee Settlement", "Yamato Colony", "Kyoto Grove", "Everglades Mission"],
+      "answerIndex": 1,
+      "explanation": "Founded in 1904, the Yamato Colony lost much of its farmland to the Boca Raton Army Air Field in 1942. George Morikami later donated nearby land for the Morikami Museum."
+    },
+    {
+      "id": "hist-07",
+      "category": "history",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Built originally as school buildings in 1913 and 1925 on North Swinton Avenue, what is the name of Delray Beach's historic cultural campus?",
+      "choices": ["Old School Square", "Atlantic Commons", "Linton Hall", "Seaside Academy"],
+      "answerIndex": 0,
+      "explanation": "Old School Square preserves Delray's 1913 elementary school and 1925 high school buildings as a community arts and events center."
+    },
+    {
+      "id": "hist-08",
+      "category": "history",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "The CrossFit Hero WOD 'Murph' honors which U.S. Navy SEAL Lieutenant who was posthumously awarded the Medal of Honor?",
+      "choices": ["Lt. Michael P. Murphy", "Lt. Marcus Luttrell", "Lt. Chris Kyle", "Lt. Jason Dunham"],
+      "answerIndex": 0,
+      "explanation": "Lt. Michael P. Murphy was killed in action on June 28, 2005, during Operation Red Wings in Afghanistan after exposing himself to enemy fire to radio for help."
+    },
+    {
+      "id": "hist-09",
+      "category": "history",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Before it became a CrossFit Hero WOD, what nickname did Lt. Michael Murphy give his signature mile-run, pull-up, push-up, and squat workout?",
+      "choices": ["Ironclad", "Body Armor", "Red Wing", "Frogman"],
+      "answerIndex": 1,
+      "explanation": "Murphy called the workout 'Body Armor' because he performed it wearing a 20-lb weighted vest or body armor."
+    },
+    {
+      "id": "hist-10",
+      "category": "history",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "The barbell Hero WOD 'DT' (5 rounds of 12 deadlifts, 9 hang power cleans, 6 push jerks) honors USAF Staff Sgt. Timothy P. Davis. Which branch did he serve?",
+      "choices": ["U.S. Marine Corps", "U.S. Army", "U.S. Air Force", "U.S. Coast Guard"],
+      "answerIndex": 2,
+      "explanation": "USAF Staff Sgt. Timothy P. Davis was killed in Afghanistan on February 20, 2009, while supporting combat operations."
+    },
+    {
+      "id": "hist-11",
+      "category": "history",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "The Hero WOD 'JT' (21-15-9 handstand push-ups, ring dips, and push-ups) honors Petty Officer 1st Class Jeff Taylor, who served in which branch?",
+      "choices": ["U.S. Navy", "U.S. Army", "U.S. Air Force", "U.S. Marine Corps"],
+      "answerIndex": 0,
+      "explanation": "Navy SEAL Petty Officer 1st Class Jeff Taylor was killed on June 28, 2005, during Operation Red Wings alongside Lt. Michael Murphy."
+    },
+    {
+      "id": "hist-12",
+      "category": "history",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which U.S. military branch uses the official motto 'Semper Fidelis' (Always Faithful)?",
+      "choices": ["U.S. Navy", "U.S. Marine Corps", "U.S. Coast Guard", "U.S. Army"],
+      "answerIndex": 1,
+      "explanation": "'Semper Fidelis' has been the motto of the United States Marine Corps since 1883."
+    },
+    {
+      "id": "hist-13",
+      "category": "history",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Founded on June 14, 1775, which is the oldest branch of the United States Armed Forces?",
+      "choices": ["U.S. Navy", "U.S. Marine Corps", "U.S. Army", "U.S. Coast Guard"],
+      "answerIndex": 2,
+      "explanation": "The Continental Congress established the Continental Army on June 14, 1775, making the U.S. Army the nation's oldest military branch."
+    },
+    {
+      "id": "hist-14",
+      "category": "history",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "During World War II, why were coastal towns like Delray Beach ordered to enforce strict nighttime blackouts?",
+      "choices": [
+        "To conserve electricity for radar towers",
+        "To stop German U-boats from seeing ships silhouetted against shore lights",
+        "To hide pineapple fields from reconnaissance planes",
+        "To prevent signal interference with Camp Murphy"
+      ],
+      "answerIndex": 1,
+      "explanation": "Bright coastal lights silhouetted Allied merchant tankers offshore, making them easy targets for German U-boats patrolling Florida's Atlantic coast."
+    },
+    {
+      "id": "hist-15",
+      "category": "history",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "What is the highest U.S. military decoration awarded for personal acts of valor above and beyond the call of duty?",
+      "choices": ["Silver Star", "Distinguished Service Cross", "Purple Heart", "Medal of Honor"],
+      "answerIndex": 3,
+      "explanation": "Established in 1861, the Medal of Honor is the United States' highest award for military valor in action against an enemy force."
+    },
+
+    {
+      "id": "anat-01",
+      "category": "anatomy",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "What is the standard weight of a men's Olympic barbell?",
+      "choices": ["35 lbs (15 kg)", "45 lbs (20 kg)", "55 lbs (25 kg)", "40 lbs (18 kg)"],
+      "answerIndex": 1,
+      "explanation": "A standard men's Olympic barbell weighs 20 kg (approx. 44.1 lbs, rounded to 45 lbs in U.S. gyms)."
+    },
+    {
+      "id": "anat-02",
+      "category": "anatomy",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "What is the standard weight of a women's Olympic barbell?",
+      "choices": ["25 lbs (11 kg)", "30 lbs (13.5 kg)", "35 lbs (15 kg)", "45 lbs (20 kg)"],
+      "answerIndex": 2,
+      "explanation": "A women's Olympic barbell weighs 15 kg (33 lbs, commonly called a 35-lb bar in CrossFit) and has a narrower 25 mm grip diameter."
+    },
+    {
+      "id": "anat-03",
+      "category": "anatomy",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "In International Weightlifting Federation (IWF) color coding, what color is a 20 kg (45 lb) bumper plate?",
+      "choices": ["Red", "Yellow", "Green", "Blue"],
+      "answerIndex": 3,
+      "explanation": "IWF plate colors: Red = 25 kg (55 lb), Blue = 20 kg (45 lb), Yellow = 15 kg (35 lb), and Green = 10 kg (25 lb)."
+    },
+    {
+      "id": "anat-04",
+      "category": "anatomy",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "A 1-pood Russian kettlebell weighs 16 kg, which is closest to what standard pound weight in CrossFit?",
+      "choices": ["26 lbs", "35 lbs", "44 lbs", "53 lbs"],
+      "answerIndex": 1,
+      "explanation": "One pood is ~16.38 kg (~36 lbs). In CrossFit, 16 kg is paired with 35 lbs, 24 kg (1.5 pood) with 53 lbs, and 32 kg (2 pood) with 70 lbs."
+    },
+    {
+      "id": "anat-05",
+      "category": "anatomy",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "What are the three standard heights (in inches) on a classic CrossFit 3-in-1 plyometric box?",
+      "choices": ["18\", 22\", 26\"", "20\", 24\", 30\"", "16\", 20\", 24\"", "24\", 28\", 32\""],
+      "answerIndex": 1,
+      "explanation": "Standard 3-in-1 plyo boxes measure 20\" x 24\" x 30\", matching common women's Rx (20\") and men's Rx (24\") box jump heights."
+    },
+    {
+      "id": "anat-06",
+      "category": "anatomy",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "What are the standard CrossFit Rx wall-ball target heights for men and women?",
+      "choices": ["11 ft men / 10 ft women", "10 ft men / 9 ft women", "9 ft men / 8 ft women", "10 ft men / 8 ft women"],
+      "answerIndex": 1,
+      "explanation": "CrossFit Rx standards set the wall-ball target at 10 feet for men (20-lb ball) and 9 feet for women (14-lb ball)."
+    },
+    {
+      "id": "anat-07",
+      "category": "anatomy",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "On a Concept2 RowErg, what does moving the damper lever from 1 to 10 directly change?",
+      "choices": [
+        "Mechanical brake friction on the chain",
+        "How much air enters the flywheel housing (drag factor)",
+        "The calories-per-stroke multiplier on the monitor",
+        "Seat rail tension"
+      ],
+      "answerIndex": 1,
+      "explanation": "The damper controls airflow into the flywheel housing—affecting drag factor and how quickly the wheel slows between strokes, rather than acting like a fixed weight."
+    },
+    {
+      "id": "anat-08",
+      "category": "anatomy",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which group of muscles—including the glutes, hamstrings, and calves—is known as the 'posterior chain'?",
+      "choices": [
+        "Muscles on the front of the torso",
+        "Muscles along the backside of the body",
+        "Muscles of the forearm and wrist",
+        "Deep core abdominal muscles"
+      ],
+      "answerIndex": 1,
+      "explanation": "The posterior chain runs along the back of the body and powers deadlifts, kettlebell swings, sprinting, and jumping."
+    },
+    {
+      "id": "anat-09",
+      "category": "anatomy",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "The four rotator cuff muscles (supraspinatus, infraspinatus, teres minor, subscapularis) primarily stabilize which joint?",
+      "choices": ["Elbow joint", "Hip joint", "Shoulder joint", "Knee joint"],
+      "answerIndex": 2,
+      "explanation": "The rotator cuff keeps the head of the humerus centered in the shoulder socket during overhead lifts, kipping pull-ups, and presses."
+    },
+    {
+      "id": "anat-10",
+      "category": "anatomy",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "During the controlled lowering phase of a back squat, what type of contraction are your quadriceps performing?",
+      "choices": ["Concentric", "Isometric", "Eccentric", "Ballistic"],
+      "answerIndex": 2,
+      "explanation": "An eccentric contraction happens when a muscle lengthens under tension, such as controlling your descent into the bottom of a squat."
+    },
+    {
+      "id": "anat-11",
+      "category": "anatomy",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which large diamond-shaped muscle of the upper back elevates and retracts the shoulder blades during cleans, snatches, and farmer's carries?",
+      "choices": ["Trapezius", "Pectoralis minor", "Sartorius", "Gastrocnemius"],
+      "answerIndex": 0,
+      "explanation": "The upper, middle, and lower trapezius fibers shrug, retract, and stabilize the scapulae under heavy loads."
+    },
+    {
+      "id": "anat-12",
+      "category": "anatomy",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Which anatomical plane divides the body into left and right halves—the primary plane for squats, deadlifts, and running?",
+      "choices": ["Frontal (coronal) plane", "Transverse plane", "Sagittal plane", "Oblique plane"],
+      "answerIndex": 2,
+      "explanation": "Forward-and-backward flexion/extension movements like squats, lunges, and running take place in the sagittal plane."
+    },
+    {
+      "id": "anat-13",
+      "category": "anatomy",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Why do coaches cue 'engage your lats' (latissimus dorsi) before pulling a heavy deadlift?",
+      "choices": [
+        "To flex the elbows early",
+        "To keep the bar tight against the shins and stabilize the spine",
+        "To shift body weight onto the toes",
+        "To relax the hamstring tension"
+      ],
+      "answerIndex": 1,
+      "explanation": "Engaging the lats pulls the barbell back toward your center of gravity and creates upper-back tension that protects the lumbar spine."
+    },
+    {
+      "id": "anat-14",
+      "category": "anatomy",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Compared to a men's 28 mm barbell shaft, what is the standard shaft diameter of a women's 15 kg Olympic barbell?",
+      "choices": ["22 mm", "25 mm", "27 mm", "30 mm"],
+      "answerIndex": 1,
+      "explanation": "A women's 15 kg Olympic bar has a 25 mm shaft diameter, making hook-grip wrapping easier for smaller hands."
+    },
+    {
+      "id": "anat-15",
+      "category": "anatomy",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which muscle group is the primary knee extensor—critical for driving up out of a heavy front squat?",
+      "choices": ["Hamstrings", "Quadriceps", "Soleus", "Adductors"],
+      "answerIndex": 1,
+      "explanation": "The four muscles of the quadriceps straighten the knee joint and take center stage in upright front squats and wall balls."
+    },
+
+    {
+      "id": "mus-01",
+      "category": "music",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which Eminem song from the '8 Mile' soundtrack opens with 'Look, if you had one shot, or one opportunity...'?",
+      "choices": ["Till I Collapse", "Lose Yourself", "Not Afraid", "Rap God"],
+      "answerIndex": 1,
+      "explanation": "Released in 2002, 'Lose Yourself' won the Academy Award for Best Original Song and remains one of the most-played PR tracks in gym history."
+    },
+    {
+      "id": "mus-02",
+      "category": "music",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which Metallica hit from 'The Black Album' features the chorus 'Exit light, enter night'?",
+      "choices": ["Master of Puppets", "One", "Enter Sandman", "Seek & Destroy"],
+      "answerIndex": 2,
+      "explanation": "'Enter Sandman' (1991) has one of rock's most recognizable build-ups for heavy barbell attempts and walkouts."
+    },
+    {
+      "id": "mus-03",
+      "category": "music",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which 2003 DMX anthem features the high-energy hook 'Y'all gon' make me lose my mind, up in here, up in here'?",
+      "choices": ["X Gon' Give It to Ya", "Ruff Ryders' Anthem", "Party Up (Up in Here)", "Where the Hood At"],
+      "answerIndex": 2,
+      "explanation": "DMX's 'Party Up' and 'X Gon' Give It to Ya' are timeless CrossFit box warm-up and metcon staples."
+    },
+    {
+      "id": "mus-04",
+      "category": "music",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which 1992 Rage Against the Machine track builds through the lyric 'And now you do what they told ya'?",
+      "choices": ["Bulls on Parade", "Killing in the Name", "Guerrilla Radio", "Wake Up"],
+      "answerIndex": 1,
+      "explanation": "Off their self-titled 1992 debut album, 'Killing in the Name' is a staple for heavy conditioning finishes."
+    },
+    {
+      "id": "mus-05",
+      "category": "music",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which AC/DC song opens with 13 tolls of a massive bronze church bell before the guitar riff kicks in?",
+      "choices": ["Back in Black", "T.N.T.", "Hells Bells", "Highway to Hell"],
+      "answerIndex": 2,
+      "explanation": "Released on 'Back in Black' (1980), 'Hells Bells' is an unmistakable countdown track before a WOD clock starts."
+    },
+    {
+      "id": "mus-06",
+      "category": "music",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Linkin Park and Jay-Z teamed up on the 2004 mashup EP 'Collision Course,' creating which famous workout track?",
+      "choices": ["In the End / 99 Problems", "Numb / Encore", "Faint / Dirt Off Your Shoulder", "Bleed It Out / Run This Town"],
+      "answerIndex": 1,
+      "explanation": "'Numb/Encore' won the 2006 Grammy for Best Rap/Sung Collaboration and still dominates gym playlists."
+    },
+    {
+      "id": "mus-07",
+      "category": "music",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which Kendrick Lamar hit from the album 'DAMN.' repeats the hook 'Sit down, be humble'?",
+      "choices": ["DNA.", "Alright", "HUMBLE.", "m.A.A.d city"],
+      "answerIndex": 2,
+      "explanation": "'HUMBLE.' hit #1 on the Billboard Hot 100 in 2017 and swept four categories at the 60th Grammy Awards."
+    },
+    {
+      "id": "mus-08",
+      "category": "music",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which 1997 Foo Fighters classic opens with 'Hello, I've waited here for you' over a fast, driving guitar riff?",
+      "choices": ["The Pretender", "My Hero", "Everlong", "Times Like These"],
+      "answerIndex": 2,
+      "explanation": "With its ~158 BPM drive, 'Everlong' from 'The Colour and the Shape' is a favorite for rowing and running intervals."
+    },
+    {
+      "id": "mus-09",
+      "category": "music",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which 2010 Kanye West track samples King Crimson and declares 'No one man should have all that power'?",
+      "choices": ["Stronger", "POWER", "Black Skinhead", "All of the Lights"],
+      "answerIndex": 1,
+      "explanation": "'POWER' from 'My Beautiful Dark Twisted Fantasy' is one of the most popular heavy-lift hype tracks ever made."
+    },
+    {
+      "id": "mus-10",
+      "category": "music",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which 1982 Survivor rock classic was commissioned by Sylvester Stallone for 'Rocky III'?",
+      "choices": ["Burning Heart", "Eye of the Tiger", "Hearts on Fire", "No Easy Way Out"],
+      "answerIndex": 1,
+      "explanation": "'Eye of the Tiger' spent six weeks at #1 on the Billboard Hot 100 and became the ultimate training montage anthem."
+    },
+    {
+      "id": "mus-11",
+      "category": "music",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which Fort Minor track famously breaks down success into 'ten percent luck, twenty percent skill, fifteen percent concentrated power of will'?",
+      "choices": ["Where'd You Go", "Remember the Name", "High Road", "Believe Me"],
+      "answerIndex": 1,
+      "explanation": "Released in 2005 by Mike Shinoda's side project Fort Minor, 'Remember the Name' remains a staple on CrossFit competition floors."
+    },
+    {
+      "id": "mus-12",
+      "category": "music",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which 2012 Macklemore & Ryan Lewis hit featuring Ray Dalton asks 'Can the ceiling hold us?'",
+      "choices": ["Thrift Shop", "Can't Hold Us", "Same Love", "Downtown"],
+      "answerIndex": 1,
+      "explanation": "Driven by pounding piano chords and brass, 'Can't Hold Us' hits ~146 BPM—ideal for fast metcons."
+    },
+    {
+      "id": "mus-13",
+      "category": "music",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which 1990 AC/DC opener starts with Angus Young's relentless one-handed guitar tapping before the crowd shouts the title?",
+      "choices": ["Thunderstruck", "You Shook Me All Night Long", "Dirty Deeds", "Shoot to Thrill"],
+      "answerIndex": 0,
+      "explanation": "'Thunderstruck' from 'The Razors Edge' is famous for the 'Thunderstruck' burpee/air-squat drinking-game-style WOD."
+    },
+    {
+      "id": "mus-14",
+      "category": "music",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Which Dropkick Murphys Celtic-punk anthem featured in 'The Departed' is a staple on St. Patrick's Day and sled-push playlists?",
+      "choices": ["Rose Tattoo", "The State of Massachusetts", "I'm Shipping Up to Boston", "Tessie"],
+      "answerIndex": 2,
+      "explanation": "With lyrics adapted from Woody Guthrie, 'I'm Shipping Up to Boston' (2005) brings instant adrenaline to any gym floor."
+    },
+    {
+      "id": "mus-15",
+      "category": "music",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Which 2011 Calvin Harris & Rihanna EDM smash drops right after the vocal hook 'We found love in a hopeless place'?",
+      "choices": ["This Is What You Came For", "We Found Love", "Feel So Close", "Only Girl (In the World)"],
+      "answerIndex": 1,
+      "explanation": "'We Found Love' topped the Billboard Hot 100 for 10 weeks and remains a high-BPM cardio favorite."
+    },
+
+    {
+      "id": "food-01",
+      "category": "food",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "How many calories (kcal) are provided by 1 gram of protein and 1 gram of carbohydrate?",
+      "choices": ["2 kcal each", "4 kcal each", "7 kcal each", "9 kcal each"],
+      "answerIndex": 1,
+      "explanation": "Both protein and carbohydrates supply 4 kcal per gram, while alcohol provides 7 kcal/g and fat provides 9 kcal/g."
+    },
+    {
+      "id": "food-02",
+      "category": "food",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "How many calories (kcal) are in 1 gram of dietary fat?",
+      "choices": ["4 kcal", "6 kcal", "7 kcal", "9 kcal"],
+      "answerIndex": 3,
+      "explanation": "Fat is the most energy-dense macronutrient at 9 kcal per gram—more than double protein or carbohydrates."
+    },
+    {
+      "id": "food-03",
+      "category": "food",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Which essential branched-chain amino acid (BCAA) acts as the primary biochemical trigger for muscle protein synthesis?",
+      "choices": ["Alanine", "Leucine", "Glycine", "Taurine"],
+      "answerIndex": 1,
+      "explanation": "Leucine activates the mTOR signaling pathway that tells muscle tissue to begin repairing and building new protein."
+    },
+    {
+      "id": "food-04",
+      "category": "food",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "What is the stored form of carbohydrate kept in your muscles and liver to power high-intensity CrossFit workouts?",
+      "choices": ["Triglycerides", "Glycogen", "Creatine phosphate", "Lactate"],
+      "answerIndex": 1,
+      "explanation": "Muscle glycogen is your body's rapid-access fuel tank for intense glycolytic efforts like 8-to-15-minute metcons."
+    },
+    {
+      "id": "food-05",
+      "category": "food",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which primary electrolyte is lost in the greatest amount through sweat during humid Delray Beach training sessions?",
+      "choices": ["Calcium", "Sodium", "Phosphorus", "Selenium"],
+      "answerIndex": 1,
+      "explanation": "Sweat is primarily water and sodium; heavy sweaters can lose over 1,000 mg of sodium per hour in South Florida heat."
+    },
+    {
+      "id": "food-06",
+      "category": "food",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which electrolyte works opposite sodium to regulate fluid balance and nerve impulses, and is rich in potatoes, avocados, and bananas?",
+      "choices": ["Potassium", "Iodine", "Chromium", "Manganese"],
+      "answerIndex": 0,
+      "explanation": "Potassium works via the sodium-potassium pump to support muscle contractions, nerve signaling, and hydration."
+    },
+    {
+      "id": "food-07",
+      "category": "food",
+      "difficulty": "easy",
+      "points": 100,
+      "question": "Which fat-soluble vitamin is produced in the skin from sunlight and supports bone density and immune health?",
+      "choices": ["Vitamin C", "Vitamin B12", "Vitamin D", "Vitamin K"],
+      "answerIndex": 2,
+      "explanation": "Vitamin D helps the body absorb calcium and plays key roles in bone strength, muscle function, and immunity."
+    },
+    {
+      "id": "food-08",
+      "category": "food",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which trace mineral is essential for hemoglobin to carry oxygen in your blood to working muscles?",
+      "choices": ["Magnesium", "Iron", "Zinc", "Copper"],
+      "answerIndex": 1,
+      "explanation": "Iron sits at the center of hemoglobin and myoglobin; low iron can cause fatigue and drop aerobic conditioning output."
+    },
+    {
+      "id": "food-09",
+      "category": "food",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which macromineral supports ATP energy production, muscle relaxation, and sleep quality—found in dark chocolate, almonds, and spinach?",
+      "choices": ["Magnesium", "Chloride", "Fluoride", "Boron"],
+      "answerIndex": 0,
+      "explanation": "Magnesium is a cofactor in over 300 enzymatic reactions, including energy metabolism and post-workout neuromuscular relaxation."
+    },
+    {
+      "id": "food-10",
+      "category": "food",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Which family of water-soluble vitamins acts as coenzymes to convert carbs, fats, and proteins into usable cellular energy?",
+      "choices": ["Vitamin E family", "B-complex vitamins", "Vitamin A carotenoids", "Vitamin K group"],
+      "answerIndex": 1,
+      "explanation": "B vitamins (B1, B2, B3, B5, B6, B12, folate, biotin) are crucial links in turning dietary macros into ATP."
+    },
+    {
+      "id": "food-11",
+      "category": "food",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Which water-soluble vitamin is required for synthesizing collagen—helping repair tendons, ligaments, and skin?",
+      "choices": ["Vitamin C", "Vitamin D", "Vitamin B6", "Vitamin K"],
+      "answerIndex": 0,
+      "explanation": "Vitamin C (ascorbic acid) is a required cofactor for collagen cross-linking in connective tissues."
+    },
+    {
+      "id": "food-12",
+      "category": "food",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "Found naturally in red meat and fish, which compound is widely supplemented at 3–5 g daily to regenerate ATP during heavy, explosive lifts?",
+      "choices": ["Beta-alanine", "Creatine", "Glutamine", "Citrulline"],
+      "answerIndex": 1,
+      "explanation": "Creatine boosts intramuscular phosphocreatine stores, supporting repeat power output in heavy sets and short sprints."
+    },
+    {
+      "id": "food-13",
+      "category": "food",
+      "difficulty": "medium",
+      "points": 200,
+      "question": "EPA and DHA—abundant in salmon, sardines, and mackerel—belong to which class of essential fatty acids?",
+      "choices": ["Trans fats", "Omega-3 fatty acids", "Saturated fats", "Medium-chain triglycerides"],
+      "answerIndex": 1,
+      "explanation": "Omega-3 fatty acids support cardiovascular health, cell membrane fluidity, and balanced recovery inflammation."
+    },
+    {
+      "id": "food-14",
+      "category": "food",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "For most active adults, roughly how much high-quality protein per meal maximizes muscle protein synthesis?",
+      "choices": ["5–10 grams", "20–40 grams", "75–90 grams", "100+ grams"],
+      "answerIndex": 1,
+      "explanation": "Research shows ~20–40 g of complete protein per feeding provides enough leucine and amino acids to maximally stimulate muscle repair."
+    },
+    {
+      "id": "food-15",
+      "category": "food",
+      "difficulty": "hard",
+      "points": 300,
+      "question": "Unlike fat-soluble vitamins (A, D, E, K), what typically happens to excess amounts of water-soluble vitamins like Vitamin C?",
+      "choices": [
+        "They are stored indefinitely in liver fat",
+        "They convert directly into muscle glycogen",
+        "They are largely excreted in urine",
+        "They turn into sodium in sweat"
+      ],
+      "answerIndex": 2,
+      "explanation": "Because water-soluble vitamins aren't stored in large reserves (except B12 in the liver), excess intake is mostly excreted in urine."
+    }
+  ]
+}
