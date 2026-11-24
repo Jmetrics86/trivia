@@ -27,10 +27,10 @@
       "category": "history",
       "difficulty": "easy",
       "points": 100,
-      "question": "Around 1911, Delray Beach experienced a major farming and canning boom centered around tomatoes and which tropical fruit?",
+      "question": "Around 1911, early Delray experienced a major farming and canning boom centered around tomatoes and which tropical fruit?",
       "choices": ["Mangoes", "Key Limes", "Pineapples", "Bananas"],
       "answerIndex": 2,
-      "explanation": "Pineapple and tomato farming boomed in early Delray around 1911, inspiring the name of downtown's historic Pineapple Grove Arts District."
+      "explanation": "Pineapple and tomato farming boomed around Delray's 1911 incorporation, inspiring the name of downtown's historic Pineapple Grove Arts District."
     },
     {
       "id": "hist-02",
@@ -77,10 +77,10 @@
       "category": "history",
       "difficulty": "medium",
       "points": 200,
-      "question": "Before settlers renamed the town Delray in 1901, what was the settlement originally named after its founder from Michigan?",
+      "question": "Before settlers renamed the town Delray following the devastating 1898 freeze, what was the settlement originally named after its founder from Michigan?",
       "choices": ["Linton", "Flaglerville", "Palm Port", "Boynton"],
       "answerIndex": 0,
-      "explanation": "Former Michigan Congressman William S. Linton bought 160 acres in 1894 and platted the town as Linton before settlers renamed it Delray in 1901."
+      "explanation": "Former Michigan Congressman William S. Linton bought 160 acres in 1894 and platted the town as Linton; per the Delray Beach Historical Society, settlers renamed it Delray after the 1898 freeze."
     },
     {
       "id": "hist-07",
@@ -243,10 +243,10 @@
       "category": "anatomy",
       "difficulty": "medium",
       "points": 200,
-      "question": "A traditional 1-pood Russian kettlebell weighs 16 kg—closest to which standard pound weight used in CrossFit?",
+      "question": "A modern 1-pood competition kettlebell weighs 16 kg—closest to which standard pound weight used in CrossFit?",
       "choices": ["26 lbs", "35 lbs", "44 lbs", "53 lbs"],
       "answerIndex": 1,
-      "explanation": "A 16 kg kettlebell equals ~35.3 lbs. Standard CrossFit pairings are 16 kg (35 lb), 24 kg / 1.5 pood (53 lb), and 32 kg / 2 pood (70 lb)."
+      "explanation": "Historically 1 Russian pood is ~16.38 kg (~36.1 lbs), standardized to 16 kg (~35.3 lbs) on modern kettlebells and paired with 35 lbs in CrossFit."
     },
     {
       "id": "anat-08",
@@ -289,7 +289,7 @@
       "difficulty": "hard",
       "points": 300,
       "question": "Which anatomical plane divides the body into left and right halves—the primary plane of motion for squats, deadlifts, and running?",
-      "choices": ["Frontal (coronal) plane", "Transverse plane", "Sagittal plane", "Horizontal plane"],
+      "choices": ["Frontal (coronal) plane", "Transverse (horizontal) plane", "Sagittal plane", "Oblique plane"],
       "answerIndex": 2,
       "explanation": "Forward-and-backward flexion and extension movements like squats, lunges, and running occur in the sagittal plane."
     },
@@ -479,10 +479,10 @@
       "category": "music",
       "difficulty": "hard",
       "points": 300,
-      "question": "Kendrick Lamar's 2017 #1 hit 'HUMBLE.' won how many Grammy Awards at the 60th Annual Grammy Awards?",
+      "question": "At the 60th Annual Grammy Awards, Kendrick Lamar's 2017 #1 single 'HUMBLE.' itself won how many Grammy Awards?",
       "choices": ["1", "2", "3", "5"],
       "answerIndex": 2,
-      "explanation": "'HUMBLE.' won 3 Grammys (Best Rap Performance, Best Rap Song, and Best Music Video), while its parent album 'DAMN.' also won Best Rap Album."
+      "explanation": "The track 'HUMBLE.' won 3 Grammys (Best Rap Performance, Best Rap Song, and Best Music Video), while Kendrick won 5 total that night including 'DAMN.' and 'LOYALTY.'"
     },
 
     {
@@ -490,10 +490,10 @@
       "category": "food",
       "difficulty": "easy",
       "points": 100,
-      "question": "How many calories (kcal) are provided by 1 gram of protein and 1 gram of carbohydrate?",
-      "choices": ["2 kcal each", "4 kcal each", "7 kcal each", "9 kcal each"],
+      "question": "How many calories (kcal) per gram do protein and carbohydrates each provide?",
+      "choices": ["2 kcal/g", "4 kcal/g", "7 kcal/g", "9 kcal/g"],
       "answerIndex": 1,
-      "explanation": "Both protein and carbohydrates provide 4 kcal per gram, while alcohol provides 7 kcal/g and fat provides 9 kcal/g."
+      "explanation": "Both protein and carbohydrates supply 4 kcal per gram, while alcohol provides 7 kcal/g and fat provides 9 kcal/g."
     },
     {
       "id": "food-02",
@@ -520,10 +520,10 @@
       "category": "food",
       "difficulty": "easy",
       "points": 100,
-      "question": "Which primary electrolyte is lost in the largest concentration through sweat during humid Delray Beach training sessions?",
-      "choices": ["Calcium", "Sodium", "Phosphorus", "Selenium"],
+      "question": "Of the minerals below, which primary electrolyte is lost in the largest concentration through sweat during humid Delray Beach workouts?",
+      "choices": ["Calcium", "Sodium", "Potassium", "Magnesium"],
       "answerIndex": 1,
-      "explanation": "Sweat is primarily water and sodium; heavy sweaters can lose over 1,000 mg of sodium per hour in South Florida heat."
+      "explanation": "Sodium is the dominant positively charged electrolyte in sweat—far exceeding potassium, calcium, and magnesium—with losses often topping 1,000 mg/hour in heat."
     },
     {
       "id": "food-05",
@@ -580,10 +580,10 @@
       "category": "food",
       "difficulty": "medium",
       "points": 200,
-      "question": "EPA and DHA—abundant in salmon, sardines, and mackerel—belong to which class of essential fatty acids?",
+      "question": "EPA and DHA—abundant in salmon, sardines, and mackerel—belong to which family of polyunsaturated fatty acids?",
       "choices": ["Trans fats", "Omega-3 fatty acids", "Omega-9 fatty acids", "Medium-chain triglycerides"],
       "answerIndex": 1,
-      "explanation": "Omega-3 fatty acids support cardiovascular health, cell membrane fluidity, and balanced recovery inflammation."
+      "explanation": "EPA and DHA are long-chain omega-3 polyunsaturated fatty acids that support cardiovascular health, cell membranes, and recovery."
     },
     {
       "id": "food-11",
@@ -603,7 +603,7 @@
       "question": "Which water-soluble vitamin is a required enzymatic cofactor for synthesizing collagen to repair tendons and ligaments?",
       "choices": ["Vitamin C", "Vitamin B6", "Vitamin B12", "Folate (B9)"],
       "answerIndex": 0,
-      "explanation": "Vitamin C (ascorbic acid) is essential for hydroxylation steps during collagen cross-linking in tendons, ligaments, and skin."
+      "explanation": "Vitamin C (ascorbic acid) is required for hydroxylating proline and lysine residues to stabilize the collagen triple helix in tendons, ligaments, and skin."
     },
     {
       "id": "food-13",
@@ -621,9 +621,9 @@
       "difficulty": "hard",
       "points": 300,
       "question": "Roughly how long can stored intramuscular ATP and phosphocreatine (PCr) alone sustain maximal-effort explosive output (such as a 1RM lift or all-out sprint)?",
-      "choices": ["About 0–10 seconds", "About 30–45 seconds", "About 60–90 seconds", "About 2–3 minutes"],
+      "choices": ["Up to about 10 seconds", "About 30–45 seconds", "About 60–90 seconds", "About 2–3 minutes"],
       "answerIndex": 0,
-      "explanation": "The ATP-PCr system supplies immediate maximal power for roughly 0–10 seconds before rapid glycolysis takes over."
+      "explanation": "The alactic ATP-PCr system supplies immediate maximal power for roughly up to 10 seconds before rapid glycolysis takes over."
     },
     {
       "id": "food-15",
