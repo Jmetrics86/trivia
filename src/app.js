@@ -246,7 +246,10 @@ function renderScoreboardStrip() {
   const container = document.getElementById('play-scoreboard');
   if (!container) return;
 
+  container.classList.remove('scoreboard-grid-1', 'scoreboard-grid-2', 'scoreboard-grid-compact');
+
   if (state.teams.length === 0) {
+    container.classList.add('scoreboard-grid-1');
     container.innerHTML = `
       <div class="empty-teams-banner">
         <span>No teams yet. Add teams to keep score.</span>
@@ -257,12 +260,41 @@ function renderScoreboardStrip() {
     return;
   }
 
+  const count = state.teams.length;
+  const isCompact = count >= 5;
+  if (count === 1) container.classList.add('scoreboard-grid-1');
+  else if (isCompact) container.classList.add('scoreboard-grid-compact');
+  else container.classList.add('scoreboard-grid-2');
+
   const leaderId = getLeaderTeamId();
 
   container.innerHTML = state.teams
     .map((team) => {
       const isActive = team.id === state.activeTeamId;
       const isLeader = team.id === leaderId;
+      if (isCompact) {
+        return `
+          <button
+            type="button"
+            class="score-pill ${isActive ? 'active' : ''}"
+            data-select-team="${escapeHtml(team.id)}"
+            aria-pressed="${isActive}"
+          >
+            <span class="score-pill-top">
+              <span class="team-dot" style="background:${escapeHtml(team.color)}"></span>
+              <span class="score-pill-name">${escapeHtml(team.name)}</span>
+            </span>
+            <span class="score-pill-bottom">
+              <span class="score-pill-sub">
+                ${isActive ? '<span class="score-pill-turn">Up</span>' : ''}
+                ${isLeader ? '<span class="leader-tag">★</span>' : ''}
+              </span>
+              <span class="score-pill-val">${team.score}</span>
+            </span>
+          </button>
+        `;
+      }
+
       return `
         <button
           type="button"
@@ -272,7 +304,7 @@ function renderScoreboardStrip() {
         >
           <span class="score-pill-left">
             <span class="team-dot" style="background:${escapeHtml(team.color)}"></span>
-            <span>
+            <span class="score-pill-info">
               <span class="score-pill-name">${escapeHtml(team.name)}</span>
               <span class="score-pill-sub">
                 ${isActive ? '<span class="score-pill-turn">Up Now</span>' : ''}

@@ -208,35 +208,39 @@ textarea:focus-visible {
   cursor: pointer;
 }
 
-/* Live Scoreboard Strip */
+/* Live Scoreboard Grid (Zero Side-Scrolling) */
 .scoreboard-strip {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
-  overflow-x: auto;
-  padding: 2px 2px 4px;
-  scrollbar-width: none;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
+  padding: 2px 0;
 }
 
-.scoreboard-strip::-webkit-scrollbar {
-  display: none;
+.scoreboard-strip.scoreboard-grid-1 {
+  grid-template-columns: 1fr;
+}
+
+.scoreboard-strip.scoreboard-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.scoreboard-strip.scoreboard-grid-compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
 }
 
 .score-pill {
-  flex: 1 0 auto;
-  min-width: 124px;
-  max-width: 210px;
-  scroll-snap-align: start;
+  width: 100%;
+  min-width: 0;
   background: var(--white);
   border: 2px solid var(--stone);
   border-radius: var(--radius-sm);
-  padding: 9px 11px;
+  padding: 9px 10px;
   min-height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
   transition: border-color 0.15s ease, transform 0.1s ease, background 0.15s ease;
   text-align: left;
@@ -250,20 +254,26 @@ textarea:focus-visible {
 
 .score-pill.active {
   border-color: var(--crimson);
-  background: #fff9f8;
-  box-shadow: 0 3px 12px rgba(168, 48, 45, 0.16);
+  background: #fff8f7;
+  box-shadow: 0 3px 12px rgba(168, 48, 45, 0.18);
 }
 
 .score-pill-left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   min-width: 0;
+  flex: 1;
+}
+
+.score-pill-info {
+  min-width: 0;
+  flex: 1;
 }
 
 .team-dot {
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -275,14 +285,14 @@ textarea:focus-visible {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 108px;
 }
 
 .score-pill-sub {
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin-top: 1px;
+  gap: 4px;
+  margin-top: 2px;
+  flex-wrap: wrap;
 }
 
 .score-pill-turn {
@@ -305,10 +315,50 @@ textarea:focus-visible {
 }
 
 .score-pill-val {
-  font-size: 1.12rem;
+  font-size: 1.08rem;
   font-weight: 900;
   color: var(--navy);
   font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+/* Compact 3-column tile layout when 5+ teams exist */
+.scoreboard-grid-compact .score-pill {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 7px 8px;
+  min-height: 52px;
+  gap: 4px;
+}
+
+.scoreboard-grid-compact .score-pill-top {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.scoreboard-grid-compact .score-pill-name {
+  font-size: 0.76rem;
+  line-height: 1.2;
+}
+
+.scoreboard-grid-compact .score-pill-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.scoreboard-grid-compact .score-pill-sub {
+  margin-top: 0;
+  gap: 3px;
+}
+
+.scoreboard-grid-compact .score-pill-val {
+  font-size: 0.96rem;
+  margin-left: auto;
 }
 
 .empty-teams-banner {
@@ -1412,6 +1462,12 @@ textarea:focus-visible {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+@media (max-width: 359px) {
+  .scoreboard-strip.scoreboard-grid-compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 374px) {
