@@ -45,7 +45,7 @@
               <span class="filter-chevron" aria-hidden="true">▾</span>
             </button>
             <button type="button" class="btn btn-primary btn-sm" id="btn-redraw-compact">
-              <span aria-hidden="true">🎲</span>
+              <svg class="btn-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
               <span>New Pull</span>
             </button>
           </div>
@@ -61,7 +61,7 @@
             <div class="category-grid" id="category-picker"></div>
 
             <button type="button" class="btn btn-primary btn-pull" id="btn-pull-random">
-              <span aria-hidden="true">🎲</span>
+              <svg class="btn-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
               <span>Pull Random Trivia</span>
             </button>
           </div>
@@ -131,13 +131,13 @@
         <section class="card">
           <h2 class="section-title">Game Rules</h2>
           <div class="settings-list">
-            <div class="setting-row">
+            <div class="setting-row setting-row-stacked">
               <div>
                 <div class="setting-label">Scoring Mode</div>
                 <div class="setting-help">Difficulty tiers (Easy 100 / Med 200 / Hard 300) or flat points</div>
               </div>
-              <select id="setting-scoring-mode" class="select select-compact" aria-label="Scoring mode">
-                <option value="difficulty">Difficulty (100–300)</option>
+              <select id="setting-scoring-mode" class="select" aria-label="Scoring mode">
+                <option value="difficulty">Difficulty (100 / 200 / 300)</option>
                 <option value="flat">Flat Points</option>
               </select>
             </div>

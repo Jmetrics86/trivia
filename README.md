@@ -22,6 +22,11 @@ Run the unit tests (Node 22+):
 node --test tests/state.test.mjs
 ```
 
+Run the automated mobile UX emulation & screenshot flow (requires Chromium/Chrome):
+```bash
+node tests/ux-flow.mjs --out /tmp/ivcf-ux-screenshots
+```
+
 Serve locally over HTTP:
 ```bash
 python3 -m http.server 8080

@@ -39,8 +39,10 @@ body {
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
-  overflow-x: hidden;
-  overscroll-behavior-y: contain;
+}
+
+body.sheet-open {
+  overflow: hidden;
 }
 
 button,
@@ -152,10 +154,38 @@ textarea:focus-visible {
 /* Main Content */
 .app-main {
   flex: 1;
-  padding: 12px 12px calc(var(--nav-height) + env(safe-area-inset-bottom) + 22px);
+  padding: 12px 12px calc(var(--nav-height) + env(safe-area-inset-bottom) + 32px);
   display: flex;
   flex-direction: column;
   gap: 11px;
+  overflow-x: clip;
+}
+
+.btn-svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.cat-svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.cat-btn.active .cat-svg {
+  color: var(--crimson);
+}
+
+.empty-svg {
+  width: 36px;
+  height: 36px;
+  fill: var(--steel);
+  display: block;
+  margin: 0 auto 8px;
 }
 
 .tab-panel {
@@ -892,19 +922,40 @@ textarea:focus-visible {
   flex-wrap: wrap;
 }
 
+.award-team-chips.award-team-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
 .team-chip {
   border: 1.5px solid var(--stone-dark);
   background: var(--white);
   color: var(--text);
   border-radius: 999px;
-  padding: 8px 13px;
+  padding: 8px 12px;
   min-height: 40px;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   cursor: pointer;
+  min-width: 0;
+}
+
+.award-team-chips-grid .team-chip {
+  width: 100%;
+  border-radius: 10px;
+  padding: 7px 8px;
+  justify-content: flex-start;
+  font-size: 0.76rem;
+}
+
+.team-chip-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .team-chip.selected {
@@ -913,9 +964,13 @@ textarea:focus-visible {
   color: var(--white);
 }
 
+.team-chip.selected .team-dot {
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.9);
+}
+
 .team-chip.missed {
   border-style: dashed;
-  opacity: 0.65;
+  opacity: 0.62;
   text-decoration: line-through;
 }
 
@@ -1193,6 +1248,33 @@ textarea:focus-visible {
   border-bottom: 1px solid var(--bone);
 }
 
+.setting-row-stacked {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.badge-log-correct {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.badge-log-wrong {
+  background: var(--danger-bg);
+  color: var(--crimson);
+}
+
+.badge-log-manual {
+  background: var(--gold-bg);
+  color: var(--gold);
+}
+
+.badge-log-skip,
+.badge-log-system {
+  background: var(--bone);
+  color: var(--text-muted);
+}
+
 .setting-row[hidden] {
   display: none;
 }
@@ -1309,6 +1391,8 @@ textarea:focus-visible {
 .bottom-sheet {
   width: 100%;
   max-width: 520px;
+  max-height: 85dvh;
+  overflow-y: auto;
   background: var(--white);
   border-radius: 22px 22px 0 0;
   padding: 10px 16px calc(18px + env(safe-area-inset-bottom));
@@ -1348,22 +1432,23 @@ textarea:focus-visible {
   margin-top: 4px;
 }
 
-/* Toast */
+/* Toast — positioned at top below header with pointer-events: none so it never blocks thumb taps */
 .toast {
   position: fixed;
   left: 50%;
-  bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 14px);
+  top: calc(76px + env(safe-area-inset-top));
   transform: translateX(-50%);
   background: var(--navy-deep);
   color: var(--white);
-  padding: 11px 18px;
+  padding: 9px 16px;
   border-radius: 999px;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 800;
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28);
   z-index: 60;
   max-width: calc(100vw - 28px);
   text-align: center;
+  pointer-events: none;
 }
 
 /* Bottom Navigation */
@@ -1465,7 +1550,8 @@ textarea:focus-visible {
 }
 
 @media (max-width: 359px) {
-  .scoreboard-strip.scoreboard-grid-compact {
+  .scoreboard-strip.scoreboard-grid-compact,
+  .award-team-chips.award-team-chips-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

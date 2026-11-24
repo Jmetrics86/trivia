@@ -25,11 +25,29 @@ import {
   setActiveTeam
 } from './state.js';
 
+const ICONS = {
+  all: '<svg class="cat-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm0-13a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3z"/></svg>',
+  history: '<svg class="cat-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/></svg>',
+  anatomy: '<svg class="cat-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.57 14.86 22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg>',
+  music: '<svg class="cat-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>',
+  food: '<svg class="cat-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>',
+  ready: '<svg class="empty-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.57 14.86 22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg>',
+  done: '<svg class="empty-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.4 6 14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>'
+};
+
 const CATEGORY_META = {
-  history: { label: 'History', icon: '🏛️' },
-  anatomy: { label: 'Anatomy & Gear', fullLabel: 'Anatomy & Equipment', icon: '🏋️' },
-  music: { label: 'Music', icon: '🎵' },
-  food: { label: 'Food', icon: '🥑' }
+  history: { label: 'History', icon: ICONS.history },
+  anatomy: { label: 'Anatomy & Gear', fullLabel: 'Anatomy & Equipment', icon: ICONS.anatomy },
+  music: { label: 'Music', icon: ICONS.music },
+  food: { label: 'Food', icon: ICONS.food }
+};
+
+const LOG_TYPE_META = {
+  correct: { label: '✓ Correct', cls: 'badge-log-correct' },
+  wrong: { label: '✕ Wrong', cls: 'badge-log-wrong' },
+  manual: { label: '± Score Edit', cls: 'badge-log-manual' },
+  skip: { label: 'Skipped', cls: 'badge-log-skip' },
+  system: { label: 'System', cls: 'badge-log-system' }
 };
 
 const CHOICE_LETTERS = ['A', 'B', 'C', 'D'];
@@ -43,7 +61,7 @@ const ui = {
   selectedCategory: 'all',
   selectedDifficulty: 'all',
   filtersExpandedWhileActive: false,
-  selectedTeamColor: TEAM_COLORS[0].hex,
+  selectedTeamColor: TEAM_COLORS[state.teams.length % TEAM_COLORS.length].hex,
   awardTargetTeamId: state.activeTeamId,
   missedTeamIds: [],
   revealed: false,
@@ -92,13 +110,17 @@ function getTeamRankMap() {
   return rankMap;
 }
 
-function commitState(nextState) {
+function commitState(nextState, { preserveScroll = true } = {}) {
+  const prevY = preserveScroll ? window.scrollY : 0;
   state = nextState;
   saveState(state);
   if (!state.teams.some((t) => t.id === ui.awardTargetTeamId)) {
     ui.awardTargetTeamId = state.activeTeamId ?? state.teams[0]?.id ?? null;
   }
   renderAll();
+  if (preserveScroll && Math.abs(window.scrollY - prevY) > 4) {
+    window.scrollTo(0, prevY);
+  }
 }
 
 function showToast(message) {
@@ -150,6 +172,7 @@ function openSheet({
     }
 
     backdrop.hidden = false;
+    document.body.classList.add('sheet-open');
     if (hasInput) {
       requestAnimationFrame(() => {
         inputEl.focus();
@@ -164,6 +187,7 @@ function openSheet({
 function closeSheet(result) {
   const backdrop = document.getElementById('sheet-backdrop');
   if (backdrop) backdrop.hidden = true;
+  document.body.classList.remove('sheet-open');
   if (ui.sheetResolve) {
     const fn = ui.sheetResolve;
     ui.sheetResolve = null;
@@ -213,9 +237,8 @@ function pullNextQuestion() {
   ui.choicesShown = state.settings.showChoicesByDefault;
   ui.awardTargetTeamId = state.activeTeamId ?? state.teams[0]?.id ?? null;
   ui.lastPulledId = question.id;
-  commitState({ ...state, currentQuestionId: question.id });
-  const stage = document.getElementById('question-stage');
-  stage?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  commitState({ ...state, currentQuestionId: question.id }, { preserveScroll: false });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ---------------- RENDERING ---------------- */
@@ -413,7 +436,7 @@ function renderCategoryPicker() {
         data-cat="all"
       >
         <span class="cat-btn-top">
-          <span class="cat-icon" aria-hidden="true">🎯</span>
+          ${ICONS.all}
           <span class="cat-btn-name">All Categories (Random Mix)</span>
         </span>
         <span class="cat-btn-count">${allLeft} / ${allTotal} left</span>
@@ -430,7 +453,7 @@ function renderCategoryPicker() {
       difficulty: ui.selectedDifficulty
     }).length;
     const pct = total > 0 ? Math.round((left / total) * 100) : 0;
-    const icon = CATEGORY_META[cat.id]?.icon || '❓';
+    const icon = CATEGORY_META[cat.id]?.icon || ICONS.all;
 
     cards.push(`
       <button
@@ -439,7 +462,7 @@ function renderCategoryPicker() {
         data-cat="${escapeHtml(cat.id)}"
       >
         <span class="cat-btn-top">
-          <span class="cat-icon" aria-hidden="true">${icon}</span>
+          ${icon}
           <span class="cat-btn-name">${escapeHtml(getCategoryLabel(cat.id, true))}</span>
         </span>
         <span class="cat-btn-count">${left} / ${total} left</span>
@@ -509,7 +532,7 @@ function renderQuestionStage() {
     if (availInFilter.length === 0) {
       stage.innerHTML = `
         <div class="question-empty">
-          <div class="question-empty-icon" aria-hidden="true">🏁</div>
+          ${ICONS.done}
           <h3>No Unasked Questions Left</h3>
           <p>You've gone through every question matching this filter. Switch categories or reset the deck to keep playing.</p>
           <button type="button" class="btn btn-secondary" id="btn-inline-reset-deck">Reset Question Deck</button>
@@ -524,7 +547,7 @@ function renderQuestionStage() {
 
     stage.innerHTML = `
       <div class="question-empty">
-        <div class="question-empty-icon" aria-hidden="true">🏋️</div>
+        ${ICONS.ready}
         <h3>Ready for the Next Round</h3>
         <p>Select a category &amp; difficulty above (or stay on <strong>All Categories</strong>) and tap <strong>Pull Random Trivia</strong>.</p>
       </div>
@@ -590,9 +613,13 @@ function renderQuestionStage() {
     `
     : '';
 
+  const chipContainerClass = state.teams.length >= 5
+    ? 'award-team-chips award-team-chips-grid'
+    : 'award-team-chips';
+
   const teamChipsHtml = state.teams.length > 0
     ? `
-      <div class="award-team-chips">
+      <div class="${chipContainerClass}">
         ${state.teams
           .map((t) => {
             const selected = t.id === targetId;
@@ -604,7 +631,7 @@ function renderQuestionStage() {
                 data-award-team="${escapeHtml(t.id)}"
               >
                 <span class="team-dot" style="background:${escapeHtml(t.color)}"></span>
-                <span>${escapeHtml(t.name)}</span>
+                <span class="team-chip-name">${escapeHtml(t.name)}</span>
               </button>
             `;
           })
@@ -949,14 +976,18 @@ function renderLogsTab() {
     .map((entry) => {
       const deltaClass = entry.delta > 0 ? 'pos' : entry.delta < 0 ? 'neg' : 'zero';
       const deltaStr = entry.delta > 0 ? `+${entry.delta}` : `${entry.delta ?? 0}`;
-      const catLabel = entry.category ? getCategoryLabel(entry.category, true) : entry.type;
+      const typeMeta = LOG_TYPE_META[entry.type] || { label: entry.type, cls: 'badge-log-system' };
+      const catBadge = entry.category
+        ? `<span class="badge badge-cat">${escapeHtml(getCategoryLabel(entry.category, true))}</span>`
+        : '';
       const scoreAfter = entry.newScore != null ? ` • Score: ${entry.newScore}` : '';
       return `
         <article class="log-item">
           <div class="log-item-top">
             <div class="badge-group">
               <span class="badge badge-cat">${escapeHtml(entry.teamName || 'System')}</span>
-              <span class="badge badge-pts">${escapeHtml(catLabel)}</span>
+              <span class="badge ${typeMeta.cls}">${escapeHtml(typeMeta.label)}</span>
+              ${catBadge}
             </div>
             <span class="log-delta ${deltaClass}">${deltaStr} pts</span>
           </div>
@@ -1057,7 +1088,9 @@ function switchTab(tabName) {
     if (match) btn.setAttribute('aria-current', 'page');
     else btn.removeAttribute('aria-current');
   });
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  const toast = document.getElementById('toast');
+  if (toast) toast.hidden = true;
+  window.scrollTo(0, 0);
 }
 
 function bindEvents() {
@@ -1122,6 +1155,8 @@ function bindEvents() {
       return;
     }
     input.value = '';
+    const colorIdx = TEAM_COLORS.findIndex((c) => c.hex === ui.selectedTeamColor);
+    ui.selectedTeamColor = TEAM_COLORS[(colorIdx + 1) % TEAM_COLORS.length].hex;
     commitState(res.state);
     showToast(`Added "${res.team.name}"!`);
   });
